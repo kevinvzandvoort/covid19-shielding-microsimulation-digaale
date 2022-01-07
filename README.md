@@ -26,7 +26,7 @@ The following files are used to run the model:
 - `./scripts/functions.R`
   - Helper functions used by the model. Used in `single_run.R`.
 - `./scripts/read_data.R`
-  - Downloads Somaliland IDP demographic and contact data from GitHub (https://github.com/kevinvzandvoort/espicc-somaliland-digaale-survey-2019)
+  - Downloads Somaliland IDP demographic and contact data from [GitHub](https://github.com/kevinvzandvoort/espicc-somaliland-digaale-survey-2019)
   - Prepares non-intervention parameters and distributions used in the model
 - `./data`
   - Other datasets used in the model
