@@ -1,9 +1,10 @@
 .args = if(interactive())
-  c("~/workspace/covid_ibm_shielding/", 1) else
+  c("~/workspace/covid_ibm_shielding/", 1, FALSE) else
     commandArgs(trailingOnly = TRUE)
 
 setwd(.args[1])
 run = as.numeric(.args[2])
+only_unmitigated = as.numeric(.args[3])
 
 message(sprintf("Starting run %s", run))
 message("Setting up R")
@@ -26,7 +27,7 @@ message("Loading model")
 #' * compile with openmp flag to increase model speed
 Sys.unsetenv("PKG_CPPFLAGS")
 Sys.setenv(PKG_CPPFLAGS = "-fopenmp")
-sourceCpp("./model/covidIBM_shielding.cpp",
+sourceCpp("./model/covidIBMshielding_quick.cpp",
           rebuild = FALSE, cacheDir = sprintf("./model/build/%s/", Sys.info() %>% .["nodename"]), verbose = T)
 #sourceCpp("~/workspace/covid_ibm_shielding/model/covidIBM.cpp", rebuild = T)
 #sourceCpp("./model/covidIBMshielding_quick.cpp", rebuild = T)
@@ -91,7 +92,12 @@ contact_matrices_bootstrap_sample_outside_household_prob =
   divideContactProbabilities(contact_matrices_bootstrap_sample_outside_household_prob, tstep_day)
 
 message("Starting scenario runs")
-scens = scenario_list[, scen]
+if(only_unmitigated){
+  scens = scenario_list[, scen]
+} else{
+  scens = scenario_list[iv_shielded_prop == 0 & prior_immunity == 0, scen]
+}
+  
 for(i in seq_len(length(scens))){
   message(sprintf("Run %s/%s", i, length(scens)))
   set.seed(run+1)

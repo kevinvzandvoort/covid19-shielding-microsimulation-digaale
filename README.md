@@ -9,7 +9,7 @@ Van Zandvoort K, Favas, C, Checchi, F, *Shielding individuals at high risk of CO
 C++ libraries: GSL, openmp
 R packages: pacman, Rcpp, RcppGSL, data.table, distcrete, magrittr, socialmixr, qs, ggplot2)
 
-We used Ubuntu 20.04.3 LTS and R4.1.2.
+All model runs and analyses were conducted using Ubuntu 20.04.3 LTS and R4.1.2.
 
 ### Generating model output
 
@@ -20,13 +20,16 @@ The following files are used to run the model:
 - `./create_scenarios.R`
   - Generates a list with all scenarios that will be ran by the model.
   - We used 5292 different scenarios in our analysis.
+- `./create_prevalence_by_age.R`
+    - Calculates the average prevalence by age across model runs for the unmitigated scenarios.
+    - Used in scenarios where prior immunity is assumed (through setPriorImmunity).
 - `./single_run.R`
   - Randomly generates a new population from the source data
   - Runs all scenarios for a single model iteration
 - `./scripts/functions.R`
   - Helper functions used by the model. Used in `single_run.R`.
 - `./scripts/read_data.R`
-  - Downloads Somaliland IDP demographic and contact data from [GitHub](https://github.com/kevinvzandvoort/espicc-somaliland-digaale-survey-2019)
+  - Downloads Somaliland IDP demographic and contact data from [GitHub](https://github.com/kevinvzandvoort/espicc-somaliland-digaale-survey-2019) [1]
   - Prepares non-intervention parameters and distributions used in the model
 - `./data`
   - Other datasets used in the model
@@ -77,3 +80,5 @@ The different analyses are included as:
 - `./analysis/cumulative_risk.R`
 - `./analysis/risk_bytime_full.R`
 - `./analysis/risk_bytime_full2.R`
+
+[1] Van Zandvoort K, Bobe MO, Hassan AI, Abdi MI, Ahmed MS, Soleman MS, Warsame MY, Wais MA, Diggle E, McGowan CR, Satzke C, Mulholland K, Egeh MM, Hassan MM, Hergeeye MA, Eggo RM, Checchi F, Flasche S, Social contacts and other risk factors for respiratory infections among internally displaced people in Somaliland. Available at https://doi.org/10.1016/j.epidem.2022.100625.

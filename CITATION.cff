@@ -1,0 +1,23 @@
+# YAML 1.2
+---
+authors:
+  -
+    affiliation: "Department of Infectious Disease Epidemiology, London School of Hygiene & Tropical Medicine, United Kingdom"
+    family-names: "van Zandvoort"
+    given-names: Kevin
+    orcid: "https://orcid.org/0000-0002-7770-0537"
+  -
+    affiliation: "Department of Infectious Disease Epidemiology, London School of Hygiene & Tropical Medicine, United Kingdom"
+    family-names: "Favas"
+    given-names: "Caroline"
+  -
+    affiliation: "Department of Infectious Disease Epidemiology, London School of Hygiene & Tropical Medicine, United Kingdom"
+    family-names: "Checchi"
+    given-names: "Francesco"
+    orcid: "https://orcid.org/0000-0001-9030-5382"
+doi: "10.5281/zenodo.5225141"
+license: MIT
+message: "If you use this data, please cite it using these metadata."
+title: "Shielding individuals at high risk of COVID-19: a micro-simulation study. Model and analyses."
+version: "v1.0.0"
+...
